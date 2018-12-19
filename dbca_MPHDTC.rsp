@@ -1,0 +1,80 @@
+##############################################################################
+##                                                                          ##
+##                            DBCA response file                            ##
+##                            ------------------                            ##
+## Copyright   1998, 2014, Oracle Corporation. All Rights Reserved.         ##
+##                                                                          ##
+## Specify values for the variables listed below to customize Oracle        ##
+## Database Configuration installation.                                     ##
+##                                                                          ##
+## Each variable is associated with a comment. The comment identifies the   ##
+## variable type.                                                           ##
+##                                                                          ##
+## Please specify the values in the following format :                      ##
+##          Type       :  Example                                           ##
+##          String     :  "<value>"                                         ##
+##          Boolean    :  True or False                                     ##
+##          Number     :  <numeric value>                                   ##
+##          StringList :  {"<value1>","<value2>"}                           ##
+##                                                                          ##
+## Examples :                                                               ##
+##     1. dbca -progress_only -responseFile <response file>                 ##
+##        Display a progress bar depicting progress of database creation    ##
+##        process.                                                          ##
+##                                                                          ##
+##     2. dbca -silent -responseFile <response file>                        ##
+##        Creates database silently. No user interface is displayed.        ##
+##                                                                          ##
+##     3. dbca -silent -createDatabase -cloneTemplate                       ##
+##			 -responseFile <response file>                      ##
+##        Creates database silently with clone template. The template in    ##
+##	  responsefile is a clone template. 			            ##
+##                                                                          ##
+##     4. dbca -silent -deleteDatabase -responseFile <response file>        ##
+##        Deletes database silently.                                        ##
+##############################################################################
+
+[GENERAL]
+
+RESPONSEFILE_VERSION = "12.1.0"
+
+OPERATION_TYPE = "createDatabase"
+[CREATEDATABASE]
+GDBNAME = "MPHDTC"
+DATABASECONFTYPE  = "SI"
+SID = "MPHDTC"
+CREATEASCONTAINERDATABASE = "true"
+NUMBEROFPDBS = "1"
+PDBNAME = "OSM73514PDB"
+PDBADMINPASSWORD = "Welcome@123"
+TEMPLATENAME = "General_Purpose.dbc"
+SYSPASSWORD = "Welcome@123"
+SYSTEMPASSWORD = "Welcome@123"
+#-----------------------------------------------------------------------------
+# Name          : EMCONFIGURATION
+# Datatype      : String
+# Description   : Enterprise Manager Configuration Type
+# Valid values  : CENTRAL|DBEXPRESS|ALL|NONE
+# Default value : NONE
+# Mandatory     : No
+#-----------------------------------------------------------------------------
+EMCONFIGURATION = "DBEXPRESS"
+EMEXPRESSPORT = "5500"
+DBSNMPPASSWORD = "Welcome@123"
+CHARACTERSET = "AL32UTF8"
+
+#-----------------------------------------------------------------------------
+# Name          : LISTENERS
+# Datatype      : String
+# Description   : Specifies list of listeners to register the database with.
+#		  By default the database is configured for all the listeners specified in the 
+#		  $ORACLE_HOME/network/admin/listener.ora 	
+# Valid values  : The list should be comma separated like "listener1,listener2".
+# Mandatory     : NO
+#-----------------------------------------------------------------------------
+#LISTENERS = "listener1,listener2"
+
+MEMORYPERCENTAGE = "60"
+DATABASETYPE = "MULTIPURPOSE"
+AUTOMATICMEMORYMANAGEMENT = "TRUE"
+#-----------------------*** End of CREATEDATABASE section ***------------------------
